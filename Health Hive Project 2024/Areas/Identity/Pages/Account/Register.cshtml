@@ -1,0 +1,217 @@
+﻿@* @page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Admin Registration";
+}
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post">
+            <h2 class="text-center">Create a new Admin Account.</h2>
+            <hr />
+
+            <!-- Title dropdown -->
+            <div class="form-group">
+                <label asp-for="Input.Title" class="control-label"></label>
+                <select asp-for="Input.Title" asp-items="Model.Input.TitleOptions" class="form-control"></select>
+                <span asp-validation-for="Input.Title" class="text-danger"></span>
+            </div>
+
+            <!-- Name field -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Name" class="form-control" aria-required="true" placeholder="Name" />
+                <label asp-for="Input.Name">Name</label>
+                <span asp-validation-for="Input.Name" class="text-danger"></span>
+            </div>
+
+            <!-- Surname field -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Surname" class="form-control" aria-required="true" placeholder="Surname" />
+                <label asp-for="Input.Surname">Surname</label>
+                <span asp-validation-for="Input.Surname" class="text-danger"></span>
+            </div>
+
+            <!-- Address Field -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Address" class="form-control" aria-required="true" placeholder="Address" />
+                <label asp-for="Input.Address">Address</label>
+                <span asp-validation-for="Input.Address" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.City" class="form-control" aria-required="true" placeholder="City" />
+                        <label asp-for="Input.City">City</label>
+                        <span asp-validation-for="Input.City" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Province" class="form-control" aria-required="true" placeholder="Province" />
+                        <label asp-for="Input.Province">Province</label>
+                        <span asp-validation-for="Input.Province" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.PostalCode" class="form-control" aria-required="true" placeholder="Postal Code" />
+                        <label asp-for="Input.PostalCode">Postal Code</label>
+                        <span asp-validation-for="Input.PostalCode" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div asp-validation-summary="ModelOnly" class="text-danger" role="alert"></div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" />
+                <label asp-for="Input.Email">Email</label>
+                <span asp-validation-for="Input.Email" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.Password">Password</label>
+                <span asp-validation-for="Input.Password" class="text-danger"></span>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="password" />
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+            </div>
+            <!-- Role selection dropdown -->
+            <div class="form-group">
+                <label asp-for="Input.Role" class="control-label">Role</label>
+                <select asp-for="Input.Role" asp-items="Model.Role" class="form-control"></select>
+                <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>
+
+
+
+
+
+
+            <!-- Button-->
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-lg btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+} *@
+
+
+@page
+@model RegisterModel
+@{
+    ViewData["Title"] = "Admin Registration";
+}
+
+<!-- Include your CSS file -->
+<link href="~/css/AdminRegistration.css" rel="stylesheet" />
+
+<h1 class="text-center">@ViewData["Title"]</h1>
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <form id="registerForm" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="needs-validation" novalidate>
+            <h2 class="text-center">Create a new Admin Account</h2>
+            <hr />
+
+            <!-- Title dropdown -->
+           
+            <div class="form-group">
+                <label asp-for="Input.Title" class="control-label">Title</label>
+                <select asp-for="Input.Title" asp-items="Model.Input.TitleOptions" class="form-control" required></select>
+                <div class="invalid-feedback">Please select a title.</div>
+            </div>
+           
+
+            <!-- Name and Surname fields -->
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Name" class="form-control" aria-required="true" placeholder="Name" required />
+                        <label asp-for="Input.Name">Name</label>
+                        <div class="invalid-feedback">Please provide a valid name.</div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Surname" class="form-control" aria-required="true" placeholder="Surname" required />
+                        <label asp-for="Input.Surname">Surname</label>
+                        <div class="invalid-feedback">Please provide a valid surname.</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Address fields -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Address" class="form-control" aria-required="true" placeholder="Address" required />
+                <label asp-for="Input.Address">Address</label>
+                <div class="invalid-feedback">Please provide a valid address.</div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.City" class="form-control" aria-required="true" placeholder="City" required />
+                        <label asp-for="Input.City">City</label>
+                        <div class="invalid-feedback">Please provide a valid city.</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.Province" class="form-control" aria-required="true" placeholder="Province" required />
+                        <label asp-for="Input.Province">Province</label>
+                        <div class="invalid-feedback">Please provide a valid province.</div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-floating mb-3">
+                        <input asp-for="Input.PostalCode" class="form-control" aria-required="true" placeholder="Postal Code" required />
+                        <label asp-for="Input.PostalCode">Postal Code</label>
+                        <div class="invalid-feedback">Please provide a valid postal code.</div>
+                    </div>
+                </div>
+       
+            </div>
+
+            <!-- Email, Password, and Role fields -->
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Email" class="form-control" autocomplete="username" aria-required="true" placeholder="name@example.com" required />
+                <label asp-for="Input.Email">Email</label>
+                <div class="invalid-feedback">Please provide a valid email.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.Password" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Password" required />
+                <label asp-for="Input.Password">Password</label>
+                <div class="invalid-feedback">Please provide a valid password.</div>
+            </div>
+            <div class="form-floating mb-3">
+                <input asp-for="Input.ConfirmPassword" class="form-control" autocomplete="new-password" aria-required="true" placeholder="Confirm Password" required />
+                <label asp-for="Input.ConfirmPassword">Confirm Password</label>
+                <div class="invalid-feedback">Please confirm your password.</div>
+            </div>
+
+
+            <!-- Role selection dropdown -->
+            <div class="form-group">
+                <label asp-for="Input.Role" class="control-label">Role</label>
+                <select asp-for="Input.Role" asp-items="Model.Role" class="form-control"></select>
+                <span asp-validation-for="Input.Role" class="text-danger"></span>
+            </div>
+
+            <!-- Button-->
+            <button id="registerSubmit" type="submit" class="w-100 btn btn-primary">Register</button>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="~/js/RegistrationValidation.js"></script>
+}
+
+
+

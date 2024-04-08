@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Health Hive Project 2024": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:58108;http://localhost:58109"
+    }
+  }
+}

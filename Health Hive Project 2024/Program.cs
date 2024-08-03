@@ -73,7 +73,7 @@ using (var scope = app.Services.CreateScope())
     //    roleManager.CreateAsync(role).Wait();
     //}
 }
-
+//TRYING TO ADD ROLES TO THE DATABASE
 
 
 
